@@ -46,7 +46,7 @@ class HealthcarePlanMarketplace:
     def mapPlanToRateArea(self, planFile):
         """ Create mapping from rateArea, state and metalLevel to rate.
         This function uses a simple mapping for each row in the input file. """
-        return self.readCSV('plans.csv')
+        return self.readCSV(planFile)
 
 
     def getAreaRate(self,zipCode):
@@ -66,20 +66,20 @@ class HealthcarePlanMarketplace:
          [{'rate_area': '3', 'state': 'MO', 'county_code': '29095', 'name': 'Jackson'}]
         in this case, we return 3
 
-        or, multiple entrie with a common rate_area         
+        or, multiple entries with a common rate_area         
             [{'rate_area': '4', 'state': 'KS', 'county_code': '20051', 'name': 'Ellis'},
              {'rate_area': '4', 'state': 'KS', 'county_code': '20141', 'name': 'Osborne'},
              {'rate_area': '4', 'state': 'KS', 'county_code': '20163', 'name': 'Rooks'}, 
              {'rate_area': '4', 'state': 'KS', 'county_code': '20167', 'name': 'Russell'}]
         in this case, we return 4
 
-        The abigious path would be cause by multiple entries, with different rate_area values
+        The ambiguous path would be cause by multiple entries, with different rate_area values
             [{'rate_area': '15', 'state': 'WI', 'county_code': '55047', 'name': 'Green Lake'}, 
             {'rate_area': '11', 'state': 'WI', 'county_code': '55137', 'name': 'Waushara'}, 
             {'rate_area': '11', 'state': 'WI', 'county_code': '55139', 'name': 'Winnebago'}]
         in this case (and similar variations), we return None.
 
-        The multiple entries handeling takes care of the zip in more than on county. """     
+        The multiple entries handling takes care of the zip in more than on county. """     
         entries = self.zipCodeToRateArea.get(zipCode)
 
         if entries is None:
