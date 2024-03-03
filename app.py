@@ -125,9 +125,9 @@ class HealthcarePlanMarketplace:
 
 
 def main():
-    zipCodeFile = 'zips.csv'
-    planFile = 'plans.csv'
-    customerZipCodes = 'slcsp.csv'
+    zipCodeFile = 'data/zips.csv'
+    planFile = 'data/plans.csv'
+    customerZipCodes = 'data/slcsp.csv'
 
     hpm = HealthcarePlanMarketplace(zipCodeFile,planFile)
     
